@@ -1,4 +1,3 @@
-// creation of data by the formation of an array 
 const sampleListings = [
   {
     title: "Cozy Beachfront Cottage",
@@ -349,5 +348,4 @@ const sampleListings = [
     country: "Costa Rica",
   },
 ];
-
 module.exports = { data: sampleListings };

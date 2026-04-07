@@ -1,19 +1,22 @@
 <style>
-  .search-btn{
+  .search-btn {
     background-color: #fe424d;
     color: #fff;
     border-radius: 25px;
     padding: 0 1rem 0 1rem;
   }
-   .search-btn:hover{
+
+  .search-btn:hover {
     background-color: #fe424d;
     color: #fff;
   }
-   .search-btn i{
+
+  .search-btn i {
     display: inline;
     margin-right: 0.5rem;
   }
-  .search-inp{
+
+  .search-inp {
     border-radius: 25px;
     padding: 0.5rem 3rem 0.5rem 3rem;
     font-size: 1rem;
@@ -44,7 +47,7 @@
       <!-- Search bar (center/right) -->
       <form class="d-flex ms-auto me-3" role="search">
         <input class="form-control me-2 x
-        search-inp" type="search" name="search" placeholder="Search destinations"/>
+        search-inp" type="search" name="search" placeholder="Search destinations" />
         <button class="btn search-btn" type="submit">
           <i class="fa-solid fa-magnifying-glass"></i>Search</button>
       </form>
@@ -56,11 +59,11 @@
         <% if(!currUser){ %>
           <a class="nav-link" href="/signup"><b>Sign up</b></a>
           <a class="nav-link" href="/login"><b>Log in</b></a>
-        <% } %>
+          <% } %>
 
-        <% if(currUser){ %>
-          <a class="nav-link" href="/logout"><b>Log out</b></a>
-        <% } %>
+            <% if(currUser){ %>
+              <a class="nav-link" href="/logout"><b>Log out</b></a>
+              <% } %>
       </div>
 
     </div>

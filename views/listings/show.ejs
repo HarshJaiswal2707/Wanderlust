@@ -1,48 +1,34 @@
 <% layout("/layouts/boilerplate")%>
-
 <div class="row mt-3">
-
-    <!-- Title -->
     <div class="col-8 offset-2">
         <h3><%= listing.title %></h3>
     </div>
-
     <!-- Card -->
     <div class="card col-6 offset-3 show-card listing-card">
         <img src="<%= listing.image.url %>" class="card-img-top img-fluid" alt="listing_img">
-
         <div class="card-body">
             <p>Owned by <i><%= listing.owner.username %></i></p>
-
             <p><%= listing.description %></p>
-
             <p>₹ <%= listing.price.toLocaleString("en-IN") %></p>
-
             <p><%= listing.location %></p>
             <p><%= listing.country %></p>
         </div>
     </div>
-
     <!-- Buttons -->
     <% if(currUser && listing.owner._id.equals(currUser._id)) { %>
         <div class="btns mt-3">
             <a href="/listings/<%= listing._id %>/edit" class="btn btn-dark col-1 offset-3">Edit</a>
-
             <form method="POST" action="/listings/<%= listing._id %>?_method=DELETE">
                 <button class="btn btn-dark offset-5">Delete</button>
             </form>
         </div>
     <% } %>
-
     <!-- Reviews -->
     <div class="col-8 offset-2 mb-3">
-
         <% if(currUser) { %>
             <hr>
             <h4>Leave a Review</h4>
-
             <form action="/listings/<%= listing._id %>/reviews" method="post" novalidate class="needs-validation">
-
                 <div class="mb-3 mt-3">
                     <fieldset class="starability-slot">
                         <input type="radio" id="first-rate1" name="review[rating]" value="1" />
@@ -61,21 +47,17 @@
                         <label for="first-rate5">5 stars</label>
                     </fieldset>
                 </div>
-
                 <div class="mb-3 mt-3">
                     <label for="comment" class="form-label">Comments</label>
                     <textarea name="review[comment]" id="comment" cols="30" rows="5" class="form-control" required></textarea>
                 </div>
-
                 <button class="btn btn-outline-dark">Submit</button>
             </form>
         <% } %>
-
         <!-- All Reviews -->
         <% if(listing.reviews.length > 0) { %>
             <div class="row mt-3">
                 <p><b>All Reviews</b></p>
-
                 <% for (review of listing.reviews) { %>
                     <div class="card col-5 ms-3 mb-3">
                         <div class="card-body">
@@ -91,11 +73,7 @@
                 <% } %>
             </div>
         <% } %>
-
     </div>
-<!-- “I used Leaflet to render the map and OpenStreetMap as the tile provider.
-The map is initialized using coordinates, tiles are loaded via a tileLayer,
-and markers with popups are added dynamically.” -->
     <!-- MAP SECTION -->
     <div class="row">
         <div class="col-8 offset-2">
@@ -103,33 +81,21 @@ and markers with popups are added dynamically.” -->
             <div id="map"></div>
         </div>
     </div>
-
 </div>
-
 <!-- Leaflet -->
 <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-
-<!-- ✅ DATA PASS -->
- <script>
+<!--DATA PASS -->
+<script>
 const lat = <%=listing.coordinates?.lat||28.61 %>;
 const lng = <%=listing.coordinates?.lng||77.23 %>;
 const title = "<%=listing.title%>";
 </script>
-
-
 <!-- MAP JS -->
 <script src="/js/map.js"></script>
-<!-- 
 
-Library:
-Leaflet
-Ye JS library hai
-Map ko screen par render karti hai
-Marker, zoom, interaction handle karti hai
 
-Map Data:
-OpenStreetMap
-Ye actual map data deta hai (roads, cities, etc.)
-Tumne is line me use kiya:
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png' -->
+
+
+
+

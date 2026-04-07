@@ -1,5 +1,5 @@
-if(process.env.NODE_ENV != "production"){
-require('dotenv').config();
+if (process.env.NODE_ENV != "production") {
+    require('dotenv').config();
 }
 const express = require("express");
 const app = express();
@@ -31,10 +31,10 @@ const User = require("./model/user.js");
 const ExpressError = require("./utils/ExpressError.js");
 
 const mongoose = require("mongoose");
-const MongoStore=require("connect-mongo").default;
+const MongoStore = require("connect-mongo").default;
 const { resolve } = require("url");
 // const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust";
-const dbUrl=process.env.ATLASDB_URL;
+const dbUrl = process.env.ATLASDB_URL;
 main()
     .then(() => {
         console.log("connected to DB Successfully");
@@ -47,14 +47,14 @@ async function main() {
 }
 
 const store = MongoStore.create({
-    mongoUrl:dbUrl,
-    crypto:{
-        secret:process.env.SECRET,
+    mongoUrl: dbUrl,
+    crypto: {
+        secret: process.env.SECRET,
     },
-    touchAfter:24*3600,
+    touchAfter: 24 * 3600,
 });
-store.on("error",(err)=>{
-    console.log("ERROR in MONGO SESSION STORE",err);
+store.on("error", (err) => {
+    console.log("ERROR in MONGO SESSION STORE", err);
 })
 const sessionOptions = {
     store,

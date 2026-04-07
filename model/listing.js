@@ -1,6 +1,4 @@
-//Express Require
 const mongoose = require("mongoose");
-//Schema formation
 const Schema = mongoose.Schema;
 const Review = require("./review.js");
 const listingSchema = new Schema({
@@ -42,13 +40,10 @@ const listingSchema = new Schema({
         ref:"User",
     },
 });
-
 listingSchema.post("findOneAndDelete", async (listing) => {
     if (listing) {
         await Review.deleteMany({ _id: { $in: listing.reviews } });
     }
 });
-//model formation for listing collectioin and with the help of this we create documents
 const Listing = mongoose.model("Listing", listingSchema);
-//We Exports Listing
 module.exports = Listing;
