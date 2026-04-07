@@ -68,10 +68,6 @@ const sessionOptions = {
     },
 };
 
-// app.get("/", (req, res) => {
-//     res.send("Hi , I am root");
-// });
-
 app.use(session(sessionOptions));
 app.use(flash());
 
@@ -88,15 +84,9 @@ app.use((req, res, next) => {
     next();
 });
 
-// app.get("/demouser",async (req,res)=>{
-//     let fakeUser = new User({
-//         email:"student@gmail.com",
-//         username: "sigma-student",
-//     });
-
-//     let registeredUser = await User.register(fakeUser,"helloworld");
-//     res.send(registeredUser);
-// });
+app.get("/", (req, res) => {
+    res.render("home.ejs");
+});
 
 app.use("/listings", listingRouter);
 app.use("/listings/:id/reviews", reviewRouter);
