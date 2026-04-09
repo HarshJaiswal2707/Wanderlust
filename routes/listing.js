@@ -14,6 +14,20 @@ router
     .get(wrapAsync(listingController.index))
     .post(isLoggedIn, upload.single("listing[image][url]"), validateListing, wrapAsync(listingController.createListing));
 
+router.get("/category/:category", async (req, res) => {
+
+    let { category } = req.params;
+
+    const listings = await Listing.find({
+        category: category
+    });
+
+    res.render("listings/index", {
+        allListings: listings
+    });
+
+});
+
 //new route
 router.get("/new", isLoggedIn, listingController.renderNewForm);
 router.route("/:id")

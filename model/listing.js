@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const Review = require("./review.js");
+const { required } = require("joi");
 const listingSchema = new Schema({
     title: {
         type: String,
@@ -22,11 +23,27 @@ const listingSchema = new Schema({
                     : v,
         },
     },
+    category: {
+        type: String,
+        enum: [
+            "Trending",
+            "Rooms",
+            "Iconic Cities",
+            "Mountains",
+            "Castles",
+            "Farms",
+            "Arctic",
+            "Domes",
+            "Boats"
+        ],
+        default: "Trending",
+        required: true,
+    },
     price: Number,
     location: String,
     coordinates: {
-    lat: Number,
-    lng: Number
+        lat: Number,
+        lng: Number
     },
     country: String,
     reviews: [
@@ -35,11 +52,11 @@ const listingSchema = new Schema({
             ref: "Review",
         },
     ],
-    owner:{
-        type:Schema.Types.ObjectId,
-        ref:"User",
+    owner: {
+        type: Schema.Types.ObjectId,
+        ref: "User",
     },
-});
+}, { timestamps: true });
 listingSchema.post("findOneAndDelete", async (listing) => {
     if (listing) {
         await Review.deleteMany({ _id: { $in: listing.reviews } });

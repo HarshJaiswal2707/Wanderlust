@@ -1,8 +1,9 @@
 const Listing = require("../model/listing");
 const getCoordinates = require("../utils/geocode");
+
 //Pages of all Listing
 module.exports.index = async (req, res) => {
-    let { search } = req.query;
+    let { search, category } = req.query;
     let allListings;
     if (search) {
         allListings = await Listing.find({
@@ -14,6 +15,25 @@ module.exports.index = async (req, res) => {
         });
     } else {
         allListings = await Listing.find({});
+    }
+    if (category === "Trending") {
+
+        allListings = await Listing.find({})
+            .sort({ createdAt: -1 })
+            .limit(8);
+
+    }
+    else if (category) {
+
+        allListings = await Listing.find({
+            category: category
+        });
+
+    }
+    else {
+
+        allListings = await Listing.find({});
+
     }
     res.render("listings/index.ejs", { allListings });
 };
@@ -70,7 +90,16 @@ module.exports.editForm = async (req, res) => {
 
 module.exports.updateListing = async (req, res) => {
     let { id } = req.params;
-    let listing = await Listing.findByIdAndUpdate(id, { ...req.body.listing });
+    const { location } = req.body.listing;
+    const coords = await getCoordinates(location);
+    let listing = await Listing.findByIdAndUpdate(
+        id,
+        {
+            ...req.body.listing,
+            coordinates: coords
+        },
+        { new: true }
+    );
     if (typeof req.file !== "undefined") {
         let url = req.file.path;
         let filename = req.file.filename;

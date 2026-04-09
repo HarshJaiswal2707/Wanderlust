@@ -5,6 +5,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    overflow-x: hidden;
 }
 
 .container {
@@ -67,7 +68,18 @@ body {
     margin: 2rem;
 
 }
+.listing-card img {
+    height: 250px;
+    object-fit: cover;
+}
 
+@media (max-width: 576px) {
+
+    .listing-card img {
+        height: 200px;
+    }
+
+}
 .card-img-top {
     border-radius: 1rem !important;
     width: 100% !important;
@@ -134,4 +146,118 @@ body {
     border-radius: 12px;
     margin-top: 10px;
 }
+@media (max-width: 576px) {
 
+    #map {
+        height: 300px;
+    }
+
+}
+#filters {
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+/* Desktop only flex */
+
+@media (min-width: 768px) {
+
+    #filters.show {
+        display: flex;
+        gap: 20px;
+    }
+
+}
+.filter {
+        display: inline-block;
+        flex-wrap: wrap;
+    align-items: center;
+    min-width: 80px;
+    text-decoration: none;
+    /* underline remove */
+    color: black;
+    /* black color */
+    font-size: 1.3rem;
+    text-align: center;
+    margin: 1rem;
+    opacity: 0.7;
+
+    transition: 0.3s;
+}
+/* Desktop only */
+
+@media (min-width: 768px) {
+
+    #filters {
+        display: flex;
+        gap: 20px;
+    }
+
+}
+#filters::-webkit-scrollbar {
+    display: none;
+}
+/* hover effect */
+.filter:hover {
+    color: black;
+    /* stay black */
+    transform: translateY(-4px);
+    opacity: 1;
+}
+
+/* visited link bhi black rahe */
+.filter:visited {
+    color: black;
+}
+
+/* Mobile Filters Layout */
+
+@media (max-width: 576px) {
+
+    #filters {
+        display: grid !important;
+
+        grid-template-columns:
+            repeat(3, 1fr);
+
+        gap: 15px;
+
+        justify-items: center;
+
+        text-align: center;
+    }
+
+    .filter {
+        margin: 0;
+        font-size: 14px;
+    }
+
+    .filter i {
+        font-size: 1.3rem;
+    }
+
+}
+
+@media (max-width: 576px) {
+
+    .tax-toggle {
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+    }
+
+}
+
+@media (min-width: 768px) {
+    #filters {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 20px;
+    }
+}
+
+.tax-toggle {
+    margin-left: auto;
+    margin-top: 1rem;
+}

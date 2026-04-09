@@ -5,13 +5,34 @@
             <h3><b>Create a new listing</b></h3>
             <form method="POST" action="/listings" novalidate class="needs-validation" enctype="multipart/form-data">
                 <div class="mb-3">
+                    <label for="category" class="form-label">Category</label>
+
+                    <select name="listing[category]" class="form-select" required>
+
+                        <option value="">Select Category</option>
+                        <option value="Rooms">Rooms</option>
+                        <option value="Iconic Cities">Iconic Cities</option>
+                        <option value="Mountains">Mountains</option>
+                        <option value="Castles">Castles</option>
+                        <option value="Amazing Pools">Amazing Pools</option>
+                        <option value="Camping">Camping</option>
+                        <option value="Farms">Farms</option>
+                        <option value="Arctic">Arctic</option>
+                        <option value="Domes">Domes</option>
+                        <option value="Boats">Boats</option>
+
+                    </select>
+                </div>
+                <div class="mb-3">
                     <label for="Title" class="form-label">Title</label>
-                    <input name="listing[title]" type="text" placeholder="Add a catchy title" class="form-control" required>
+                    <input name="listing[title]" type="text" placeholder="Add a catchy title" class="form-control"
+                        required>
                     <div class="valid-feedback">Title looks good!</div>
                 </div>
                 <div class="mb-3">
                     <label for="Description" class="form-label">Description</label>
-                    <textarea name="listing[description]" placeholder="enter description" class="form-control" required></textarea>
+                    <textarea name="listing[description]" placeholder="enter description" class="form-control"
+                        required></textarea>
                     <div class="invalid-feedback">Please enter a short description</div>
                 </div>
                 <div class="mb-3">
@@ -31,9 +52,10 @@
                     </div>
                 </div>
                 <div class="mb-3">
-                        <label for="Location" class="form-label" required>Location</label>
-                        <input name="listing[location]" type="text" placeholder="UttarPradesh" class="form-control" required>
-                        <div class="invalid-feedback">Location should be valid</div>
+                    <label for="Location" class="form-label" required>Location</label>
+                    <input name="listing[location]" type="text" placeholder="UttarPradesh" class="form-control"
+                        required>
+                    <div class="invalid-feedback">Location should be valid</div>
                 </div>
                 <button class="btn btn-dark add-btn mt-3">Add</button>
                 <br><br>
