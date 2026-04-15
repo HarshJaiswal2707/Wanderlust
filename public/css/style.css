@@ -11,7 +11,9 @@ body {
     min-height: 100vh;
     overflow-x: hidden;
 }
-
+.f-info {
+    margin-top: auto;
+}
 .container {
     flex: 1;
 }
