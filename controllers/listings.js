@@ -1,41 +1,38 @@
 const Listing = require("../model/listing");
 const getCoordinates = require("../utils/geocode");
 
-//Pages of all Listing
+// Pages of all Listing
 module.exports.index = async (req, res) => {
     let { search, category } = req.query;
-    let allListings;
-    if (search) {
-        allListings = await Listing.find({
-            $or: [
-                { title: { $regex: search, $options: "i" } },
-                { location: { $regex: search, $options: "i" } },
-                { country: { $regex: search, $options: "i" } }
-            ]
-        });
-    } else {
-        allListings = await Listing.find({});
-    }
-    if (category === "Trending") {
 
+    let query = {};
+
+    // Search filter
+    if (search) {
+        query.$or = [
+            { title: { $regex: search, $options: "i" } },
+            { location: { $regex: search, $options: "i" } },
+            { country: { $regex: search, $options: "i" } }
+        ];
+    }
+
+    // Category filter (except Trending)
+    if (category && category !== "Trending") {
+        query.category = category;
+    }
+
+    let allListings;
+    if (category === "Trending") {
+        // Trending: latest 8 listings
         allListings = await Listing.find({})
             .sort({ createdAt: -1 })
             .limit(8);
-
+    } else {
+        // Normal search + category filter
+        allListings = await Listing.find(query);
     }
-    else if (category) {
 
-        allListings = await Listing.find({
-            category: category
-        });
-
-    }
-    else {
-
-        allListings = await Listing.find({});
-
-    }
-    res.render("listings/index.ejs", { allListings });
+    res.render("listings/index.ejs", { allListings, search, category });
 };
 //Page display for create listing
 module.exports.renderNewForm = (req, res) => {
