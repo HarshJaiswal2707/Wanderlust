@@ -1,3 +1,7 @@
+/* =========================
+   GLOBAL
+========================= */
+
 body {
     font-family: "Plus Jakarta Sans", sans-serif !important;
     line-height: 1.6;
@@ -12,9 +16,12 @@ body {
     flex: 1;
 }
 
-/*Navbar*/
+/* =========================
+   NAVBAR
+========================= */
+
 .navbar {
-    height: 5rem;
+    min-height: 5rem;
     background-color: white;
 }
 
@@ -24,17 +31,21 @@ body {
 }
 
 .nav-link {
-    color: #222222 !important;
+    color: #222 !important;
 }
 
-/*footer*/
-.f-info-links a {
-    text-decoration: none;
-    color: #222222;
-}
+/* =========================
+   FOOTER
+========================= */
 
-.f-info-links a:hover {
-    text-decoration: underline;
+.f-info {
+    text-align: center;
+    min-height: 8rem;
+    background-color: #ebebeb;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
 }
 
 .f-info-links,
@@ -46,59 +57,51 @@ body {
     justify-content: center;
 }
 
+.f-info-links a {
+    text-decoration: none;
+    color: #222;
+}
+
+.f-info-links a:hover {
+    text-decoration: underline;
+}
+
 .f-info-socials i {
     font-size: 1.2rem;
     margin-right: 1rem;
 }
 
-.f-info {
-    text-align: center;
-    height: 8rem;
-    background-color: #ebebeb;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: space-evenly;
-}
+/* =========================
+   LISTING CARDS
+========================= */
 
-
-/*Cards*/
 .listing-card {
     border: none !important;
-    margin: 2rem;
-
+    margin: 0;
+    transition: 0.3s;
 }
+
 .listing-card img {
     height: 250px;
     object-fit: cover;
+    border-radius: 1rem;
 }
 
-@media (max-width: 576px) {
-
-    .listing-card img {
-        height: 200px;
-    }
-
-}
 .card-img-top {
-    border-radius: 1rem !important;
-    width: 100% !important;
+    width: 100%;
     object-fit: cover !important;
 }
 
 .card-body {
-    padding: 0 !important;
-}
-
-.card-text {
-    font-weight: 400;
+    padding: 0.5rem !important;
 }
 
 .listing-link {
     text-decoration: none;
 }
 
-/*Card Effect*/
+/* Hover */
+
 .card-img-overlay {
     opacity: 0;
 }
@@ -108,30 +111,30 @@ body {
     background-color: white;
 }
 
-/*new */
-.add-btn {
-    background-color: #fe424d !important;
-    border: none !important;
+.listing-card:hover {
+    transform: scale(1.02);
 }
 
-/*Edit page*/
+/* =========================
+   BUTTONS
+========================= */
+
+.add-btn,
 .edit-btn {
     background-color: #fe424d !important;
     border: none !important;
 }
 
-/*show page*/
+/* =========================
+   SHOW PAGE
+========================= */
+
 .show-img {
     height: 30vh;
 }
 
-.btns {
-    display: flex;
-}
-
 .show-card {
-    padding-left: 0;
-    padding-right: 0;
+    padding: 0;
 }
 
 .show-card img {
@@ -140,124 +143,194 @@ body {
     width: 100%;
 }
 
+.btns {
+    display: flex;
+    gap: 10px;
+}
+
+/* =========================
+   MAP
+========================= */
+
 #map {
     height: 400px;
     width: 100%;
     border-radius: 12px;
     margin-top: 10px;
 }
+
+/* =========================
+   FILTERS (FIXED)
+========================= */
+
+#filters {
+    margin-top: 10px;
+}
+
+/* Desktop — always visible */
+
+@media (min-width: 768px) {
+
+    #filters {
+        display: flex !important;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 20px;
+    }
+
+}
+
+/* Mobile — collapse works */
+
+@media (max-width: 767px) {
+
+    #filters.show {
+        display: grid;
+
+        grid-template-columns: repeat(3, 1fr);
+
+        gap: 18px;
+        padding: 10px 5px;
+
+        justify-items: center;
+        text-align: center;
+    }
+
+}
+
+/* Filter item */
+
+.filter {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 80px;
+
+    text-decoration: none;
+    color: black;
+
+    font-size: 1rem;
+    text-align: center;
+
+    opacity: 0.7;
+
+    transition: 0.3s;
+}
+
+.filter i {
+    font-size: 1.4rem;
+}
+
+.filter:hover {
+    transform: translateY(-4px);
+    opacity: 1;
+    color: black;
+}
+
+.filter:visited {
+    color: black;
+}
+
+#filters::-webkit-scrollbar {
+    display: none;
+}
+
+/* =========================
+   TAX TOGGLE
+========================= */
+
+.tax-toggle {
+    margin-left: auto;
+    margin-top: 1rem;
+}
+
+/* Mobile Tax Toggle */
+
 @media (max-width: 576px) {
+
+    .tax-toggle {
+        width: 100%;
+        margin: 12px 0;
+        padding: 10px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    .tax-toggle label {
+        font-size: 13px;
+        text-align: center;
+    }
+
+    .btn-dark {
+        margin-bottom: 10px;
+    }
+
+}
+
+/* =========================
+   MOBILE RESPONSIVE
+========================= */
+
+@media (max-width: 576px) {
+
+    .listing-card img {
+        height: 200px;
+    }
 
     #map {
         height: 300px;
     }
 
 }
-#filters {
-    flex-wrap: wrap;
-    align-items: center;
+
+/* =========================
+   TABLET RESPONSIVE
+========================= */
+
+@media (max-width: 768px) {
+
+    .show-card img {
+        height: 300px;
+    }
+
 }
 
-/* Desktop only flex */
+/* =========================
+   EXTRA SMALL DEVICES
+========================= */
 
-@media (min-width: 768px) {
+@media (max-width: 480px) {
 
-    #filters.show {
+    .listing-card img {
+        height: 180px;
+    }
+
+}
+
+/* =========================
+   NAVBAR SEARCH MOBILE FIX
+========================= */
+
+@media (max-width: 768px) {
+
+    form[role="search"] {
+        width: 100%;
         display: flex;
-        gap: 20px;
+        flex-direction: column;
     }
 
-}
-.filter {
-        display: inline-block;
-        flex-wrap: wrap;
-    align-items: center;
-    min-width: 80px;
-    text-decoration: none;
-    /* underline remove */
-    color: black;
-    /* black color */
-    font-size: 1.3rem;
-    text-align: center;
-    margin: 1rem;
-    opacity: 0.7;
-
-    transition: 0.3s;
-}
-/* Desktop only */
-
-@media (min-width: 768px) {
-
-    #filters {
-        display: flex;
-        gap: 20px;
+    .search-inp {
+        width: 100%;
+        margin-bottom: 5px;
     }
 
-}
-#filters::-webkit-scrollbar {
-    display: none;
-}
-/* hover effect */
-.filter:hover {
-    color: black;
-    /* stay black */
-    transform: translateY(-4px);
-    opacity: 1;
-}
-
-/* visited link bhi black rahe */
-.filter:visited {
-    color: black;
-}
-
-/* Mobile Filters Layout */
-
-@media (max-width: 576px) {
-
-    #filters {
-        display: grid !important;
-
-        grid-template-columns:
-            repeat(3, 1fr);
-
-        gap: 15px;
-
-        justify-items: center;
-
-        text-align: center;
+    .search-btn {
+        width: 100%;
     }
 
-    .filter {
-        margin: 0;
-        font-size: 14px;
-    }
-
-    .filter i {
-        font-size: 1.3rem;
-    }
-
-}
-
-@media (max-width: 576px) {
-
-    .tax-toggle {
-        display: flex;
-        justify-content: center;
-        margin-top: 10px;
-    }
-
-}
-
-@media (min-width: 768px) {
-    #filters {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        gap: 20px;
-    }
-}
-
-.tax-toggle {
-    margin-left: auto;
-    margin-top: 1rem;
 }

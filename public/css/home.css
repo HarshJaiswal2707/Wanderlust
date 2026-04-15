@@ -1,43 +1,215 @@
+/* =========================
+   GLOBAL RESET
+========================= */
+
 body {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
+
+/* =========================
+   HERO / HOME SECTION
+========================= */
 
 .home {
-    height: 100vh;
-    background-image: url("/images/Nature.jpg");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    position: relative;
+  height: 100vh;
+  background-image: url("/images/Nature.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
 }
 
-.home-content {
-    position: absolute;
-    right: 8%;
-    top: 50%;
-    transform: translateY(-50%);
-    color: white;
-    z-index: 2;
-    max-width: 400px;
-}
+/* Overlay */
 
 .home::before {
-    content: "";
-    top: 0;
-    left: 0;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+/* Hero Text */
+
+.home-content {
+  position: absolute;
+  right: 8%;
+  top: 50%;
+  transform: translateY(-50%);
+  color: white;
+  z-index: 2;
+  max-width: 400px;
+}
+
+/* Button */
+
+.explore-btn {
+  padding: 12px 28px;
+  font-size: 18px;
+  border-radius: 8px;
+  background-color: rgb(7, 148, 203);
+  border: none;
+  transition: 0.3s;
+}
+
+.explore-btn:hover {
+  background-color: rgb(5, 125, 172);
+}
+
+/* =========================
+   MOBILE HERO FIX
+========================= */
+
+@media (max-width: 768px) {
+
+  .home-content {
     position: absolute;
+    top: 50%;
+    left: 50%;
+    right: auto;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    max-width: 90%;
+  }
+
+}
+
+/* Small Mobile */
+
+@media (max-width: 480px) {
+
+  .home {
+    height: 85vh;
+  }
+
+  .home-content h1 {
+    font-size: 1.6rem;
+  }
+
+  .home-content p {
+    font-size: 0.9rem;
+  }
+
+  .explore-btn {
+    font-size: 15px;
+    padding: 10px 22px;
+  }
+
+}
+
+/* =========================
+   NAVBAR RESPONSIVE
+========================= */
+
+@media (max-width: 768px) {
+
+  .navbar-nav {
+    text-align: center;
+  }
+
+  form[role="search"] {
     width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.4);
+    margin-top: 10px;
+  }
+
+  .search-inp {
+    width: 100%;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  .search-btn {
+    width: 100%;
+    margin-top: 5px;
+  }
+
 }
 
-.explore-btn {
-    padding: 12px 28px;
-    font-size: 18px;
-    border-radius: 8px;
+/* =========================
+   LISTING CARDS
+========================= */
+
+.listing-card {
+  margin-bottom: 1.5rem;
+  border-radius: 15px;
+  overflow: hidden;
+  transition: 0.3s;
 }
 
-.explore-btn {
-    background-color: rgb(7, 148, 203);
+/* Hover Effect */
+
+.listing-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Image Fix */
+
+.card-img-top {
+  height: 250px;
+  object-fit: cover;
+}
+
+/* Tablet */
+
+@media (max-width: 768px) {
+
+  .card-img-top {
+    height: 200px;
+  }
+
+}
+
+/* Small Phones */
+
+@media (max-width: 480px) {
+
+  .card-img-top {
+    height: 180px;
+  }
+
+}
+
+/* =========================
+   GRID RESPONSIVE (Optional)
+========================= */
+
+/* Use only if NOT using Bootstrap row-cols */
+
+.listing-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+/* Tablet */
+
+@media (max-width: 992px) {
+
+  .listing-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+}
+
+/* Mobile */
+
+@media (max-width: 576px) {
+
+  .listing-container {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+}
+
+/* =========================
+   IMAGE SAFETY
+========================= */
+
+img {
+  max-width: 100%;
+  height: auto;
 }

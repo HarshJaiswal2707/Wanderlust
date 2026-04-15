@@ -1,99 +1,171 @@
-       #filters {
-           display: flex;
-           flex-wrap: wrap;
-           align-items: center;
-       }
+/* =========================
+   FILTERS SECTION
+========================= */
 
-       /* normal screen */
-       .filter {
-           text-align: center;
-           margin: 1rem;
-           opacity: 0.7;
-       }
+#filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 15px;
+}
 
-       .filter:hover {
-           transform: translateY(-3px);
-           opacity: 1;
-           cursor: pointer;
-       }
+/* Filter Item */
 
-       .filter p {
-           font-size: 0.8rem;
-       }
+.filter {
+  text-align: center;
+  margin: 0.5rem;
+  opacity: 0.7;
+  transition: 0.3s;
+  text-decoration: none;
+  color: black;
+}
 
-       /*  MOBILE FIX */
-       @media (max-width: 576px) {
-           #filters {
-               justify-content: center;
-           }
+.filter:hover {
+  transform: translateY(-3px);
+  opacity: 1;
+  cursor: pointer;
+}
 
-           .filter {
-               width: 30%;
-               margin: 0.5rem;
-           }
+.filter i {
+  font-size: 1.2rem;
+}
 
-           .filter p {
-               font-size: 0.7rem;
-           }
-       }
+.filter p {
+  font-size: 0.8rem;
+  margin-top: 5px;
+}
 
-       /* tax toggle */
-       .tax-toogle {
-           margin-left: auto;
-           margin-top: 1rem;
-       }
+/* =========================
+   MOBILE FILTER SCROLL
+========================= */
 
-       @media (max-width: 576px) {
-           .tax-toogle {
-               width: 100%;
-               text-align: center;
-           }
-       }
+@media (max-width: 768px) {
 
-       /* image */
-       .card {
-           transition: 0.3s;
-       }
+  #filters {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    white-space: nowrap;
+    padding-bottom: 10px;
+  }
 
-       .card:hover {
-           transform: scale(1.03);
-           box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-       }
+  .filter {
+    min-width: 80px;
+    flex-shrink: 0;
+  }
 
-       .card-img-top {
-           height: 20rem;
-           object-fit: cover;
-       }
+}
 
-       @media (max-width: 576px) {
-           .card-img-top {
-               height: 15rem;
-           }
-       }
+/* Extra Small Mobile */
 
-       .tax-info {
-           display: none;
-       }
+@media (max-width: 576px) {
 
-       .tax-toogle {
-           border: 1px solid black;
-           border-radius: 1rem;
-           height: 3.25rem;
-           padding: 1rem;
-           margin-left: 2rem;
-           display: flex;
-           align-items: center;
-       }
+  .filter p {
+    font-size: 0.7rem;
+  }
 
-       /* Desktop Filters Layout */
+}
+
+/* =========================
+   TAX TOGGLE
+========================= */
+
+.tax-toogle {
+  border: 1px solid black;
+  border-radius: 1rem;
+  height: 3.25rem;
+  padding: 0.8rem 1rem;
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+}
+
+/* Mobile Fix */
+
+@media (max-width: 768px) {
+
+  .tax-toogle {
+    width: 100%;
+    margin-top: 10px;
+    justify-content: center;
+  }
+
+}
+
+/* =========================
+   LISTING CARDS
+========================= */
+
+.card {
+  border-radius: 15px;
+  overflow: hidden;
+  transition: 0.3s;
+}
+
+/* Hover Effect */
+
+.card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Image Styling */
+
+.card-img-top {
+  height: 20rem;
+  object-fit: cover;
+}
+
+/* Tablet */
+
+@media (max-width: 768px) {
+
+  .card-img-top {
+    height: 18rem;
+  }
+
+}
+
+/* Mobile */
+
+@media (max-width: 576px) {
+
+  .card-img-top {
+    height: 15rem;
+  }
+
+}
+
+/* =========================
+   LISTING LINKS
+========================= */
+
+.listing-link {
+  text-decoration: none;
+  color: black;
+}
+
+.listing-link:hover {
+  color: black;
+}
+
+/* =========================
+   TAX INFO
+========================= */
+
+.tax-info {
+  display: none;
+}
+
+/* =========================
+   DESKTOP FILTER LAYOUT
+========================= */
 
 @media (min-width: 768px) {
 
-    #filters {
-        display: flex !important;
-        flex-wrap: wrap;
-        align-items: center;
-        gap: 20px;
-    }
+  #filters {
+    display: flex !important;
+    flex-wrap: wrap;
+    align-items: center;
+  }
 
 }
