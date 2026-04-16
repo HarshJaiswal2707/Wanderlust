@@ -1,12 +1,9 @@
 const Listing = require("../model/listing");
 const getCoordinates = require("../utils/geocode");
-
 // Pages of all Listing
 module.exports.index = async (req, res) => {
     let { search, category } = req.query;
-
     let query = {};
-
     // Search filter
     if (search) {
         query.$or = [
@@ -15,12 +12,10 @@ module.exports.index = async (req, res) => {
             { country: { $regex: search, $options: "i" } }
         ];
     }
-
     // Category filter (except Trending)
     if (category && category !== "Trending") {
         query.category = category;
     }
-
     let allListings;
     if (category === "Trending") {
         // Trending: latest 8 listings
@@ -31,7 +26,6 @@ module.exports.index = async (req, res) => {
         // Normal search + category filter
         allListings = await Listing.find(query);
     }
-
     res.render("listings/index.ejs", { allListings, search, category });
 };
 //Page display for create listing
@@ -72,7 +66,6 @@ module.exports.createListing = async (req, res, next) => {
     req.flash("success", "New Listing Created!");
     res.redirect("/listings");
 };
-
 module.exports.editForm = async (req, res) => {
     let { id } = req.params;
     const listing = await Listing.findById(id);
@@ -84,7 +77,6 @@ module.exports.editForm = async (req, res) => {
     originalImageUrl.replace('/upload', "/upload/h_300,w_250");
     res.render("listings/edit.ejs", { listing, originalImageUrl });
 };
-
 module.exports.updateListing = async (req, res) => {
     let { id } = req.params;
     const { location } = req.body.listing;
@@ -106,7 +98,6 @@ module.exports.updateListing = async (req, res) => {
     req.flash("success", " updated Listing!");
     res.redirect(`/listings/${id}`);
 };
-
 module.exports.destroyListing = async (req, res) => {
     let { id } = req.params;
     let deletedListing = await Listing.findByIdAndDelete(id);
