@@ -203,3 +203,55 @@ screen and (min-resolution: 192dpi) {
   transition: background-position .7s;
 }
 
+
+/* Mobile Fix for Review Stars */
+@media (max-width: 576px) {
+
+  .starability-result {
+    width: 100px;     /* pehle 150px tha */
+    height: 20px;     /* pehle 30px tha */
+    background-size: 20px auto;
+  }
+
+  .starability-result::after {
+    height: 20px;
+    background-size: 20px auto;
+  }
+
+/* Mobile Star Size Fix (Balanced Size) */
+@media (max-width: 576px) {
+
+  .starability-result {
+    width: 125px;   /* Desktop 150px → Mobile 125px */
+    height: 25px;   /* Desktop 30px → Mobile 25px */
+    background-size: 25px auto;
+  }
+
+  .starability-result::after {
+    height: 25px;
+    background-size: 25px auto;
+  }
+
+  /* Rating width adjustments */
+  .starability-result[data-rating="5"]::after {
+    width: 125px;
+  }
+
+  .starability-result[data-rating="4"]::after {
+    width: 100px;
+  }
+
+  .starability-result[data-rating="3"]::after {
+    width: 75px;
+  }
+
+  .starability-result[data-rating="2"]::after {
+    width: 50px;
+  }
+
+  .starability-result[data-rating="1"]::after {
+    width: 25px;
+  }
+
+}
+}
