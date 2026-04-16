@@ -102,6 +102,8 @@ app.use((err, req, res, next) => {
 });
 
 //Check server listen or not 
-app.listen(1000, () => {
-    console.log("server is litening to port 1000");
+const PORT = process.env.PORT || 1000;
+
+app.listen(PORT, () => {
+  console.log("Server running on port", PORT);
 });
